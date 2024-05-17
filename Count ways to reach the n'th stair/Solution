@@ -1,0 +1,23 @@
+class Solution
+{
+    //Function to count number of ways to reach the nth stair.
+    int countWays(int n)
+    {
+        
+        // your code here
+        
+        // base case 
+        if(n==1 || n==2){
+            return n;
+        }
+        
+        // recursive call
+        int n1 = countWays(n-1);
+        int n2 = countWays(n-2);
+        
+        // small calculation 
+        int smallCal = n1+n2;
+        
+        return smallCal;
+    }
+}
