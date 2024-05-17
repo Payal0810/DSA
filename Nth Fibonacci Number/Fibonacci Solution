@@ -1,0 +1,22 @@
+class Solution {
+    static int nthFibonacci(int n){
+        // code here
+        
+        // base case 
+        if(n==0){
+            return 0;
+        }
+        if(n==1){
+            return 1;
+        }
+        
+        // recursive call 
+        int n1 = nthFibonacci(n-1);
+        int n2 = nthFibonacci(n-2);
+        
+        // small calculation 
+        int smallCal = n1+n2;
+        
+        return smallCal;
+    }
+}
