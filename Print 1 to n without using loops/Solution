@@ -1,0 +1,16 @@
+class Solution{
+    static void printTillN(int N){
+        // code here
+        
+        // base case
+        if(N==0){
+            return;
+        }
+        
+        // recursive call
+        printTillN(N-1);
+        
+        // small calculation
+        System.out.print(N+" ");
+    }
+}
