@@ -1,0 +1,17 @@
+class Solution {
+
+    void printNos(int N) {
+        // code here
+        
+        // base case
+        if(N==0){
+            return;
+        }
+        
+        // small calculation
+        System.out.print(N+" ");
+        
+        // recursive call
+        printNos(N-1);
+    }
+}
