@@ -1,0 +1,33 @@
+class Hanoi {
+    
+
+    public long toh(int N, int from, int to, int aux) {
+        // Your code here
+        
+        // base case
+        if(N==1){
+            System.out.println("move disk " + N + " from rod "+ from + " to rod " + to);
+            return 1;
+        }
+        else{
+            
+            //to count moves
+            int moves = 0; 
+            
+            // first recursive call to move disk from source to aux
+            moves+=toh(N-1,from,aux,to);
+            
+            // print instruction to move last disk from source into destination 
+            System.out.println("move disk " + N + " from rod "+ from + " to rod " + to);
+            
+            //increasing count
+            moves++;
+            
+            // second recursive call to moe disks from aux to destination
+            moves+=toh(N-1,aux,to,from);
+            
+            // returning count
+            return moves;
+        }
+    }
+}
