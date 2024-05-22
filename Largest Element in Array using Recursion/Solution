@@ -1,0 +1,16 @@
+class Compute {
+    
+    public int largest(int arr[], int n)
+    {
+        // base case
+        if(n==arr.length){
+            return arr[n-1];
+        }
+        
+        // recursive call
+        int misa = largest(arr,n+1);
+        
+        // small calculation
+        return Math.max(misa, arr[n]);
+    }
+}
