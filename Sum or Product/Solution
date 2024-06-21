@@ -1,0 +1,45 @@
+import java.util.*;
+public class Main {
+	
+	public static void main(String[] args) {
+		// Write your code here
+        
+		// taking input 
+		Scanner sc = new Scanner(System.in);
+		int N = sc.nextInt();
+		int C = sc.nextInt();
+
+        // switch case for giving choice 
+		switch(C){
+
+           //    first case for printing sum 
+		   case 1 :
+		        
+				// print sum 
+				int sum = 0;
+				for(int i=1; i<=N; i++){
+					sum=sum+i;
+				}
+				System.out.println(sum);
+				break;
+
+			// second case for giving product 
+            case 2 :
+			 
+			    // print product
+				int prod = 1;
+				for(int i=1; i<=N; i++){
+					prod=prod*i;
+				}
+				System.out.println(prod);
+				break;
+		        
+			// default case 
+			default :
+			    
+				System.out.println(-1);
+				break;
+
+		}
+	}
+}
