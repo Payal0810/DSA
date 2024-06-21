@@ -1,0 +1,25 @@
+import java.util.*;
+public class Main {
+	
+	public static void main(String[] args) {
+		// Write your code here
+
+        // taking input
+		Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+
+		// counter for counting terms 
+		int count = 0;
+
+		// calculating AP terms 
+	    for(int i=1; count<x; i++ ){
+			int g = 3*i+2;
+			if(g%4!=0){
+				System.out.print(g+" ");
+				count++;
+			}
+		}
+
+		sc.close();
+	}
+}
