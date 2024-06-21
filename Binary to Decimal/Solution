@@ -1,0 +1,27 @@
+import java.util.*;
+public class Main {
+	
+	public static void main(String[] args) {
+		// Write your code here
+        
+        // taking input 
+		Scanner sc = new Scanner(System.in);
+		int N = sc.nextInt();
+        
+		// variable to store decimal no. 
+        int num = 0;
+
+		// counter to keep track of no. of digits 
+        int i = 0;
+
+		// coverting binary to decimal 
+		while(N>0){
+			int p = (int)(Math.pow(2, i));
+			int a = N%10;
+            num=num+ a*p;
+            i++;
+			N=N/10;
+		}
+        System.out.println(num);
+	}
+}
