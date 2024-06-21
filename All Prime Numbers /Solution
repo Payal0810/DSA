@@ -1,0 +1,35 @@
+import java.util.*;
+public class Solution {
+
+	public static void main(String[] args) {
+		
+		/* Your class should be named Solution.
+	 	* Read input as specified in the question.
+	 	* Print output as specified in the question.
+		*/
+         Scanner sc = new Scanner(System.in);
+		 int N = sc.nextInt();
+
+		 //outer loop for range of numbers from 2 to N
+		 for(int i=2; i<=N; i++){
+
+			 //flag to check prime
+			 boolean isPrime = true;
+
+			 //inner loop to check prime
+			 for(int j=2; j<i; j++){
+
+				 //condition to check prime
+				 if(i%j==0){
+					 isPrime = false;
+				 }
+			 }
+
+			 //now check for flag to et prime
+			 if(isPrime){
+				 System.out.println(i);
+			 }
+		 }
+		
+	}
+}
