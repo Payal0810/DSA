@@ -1,0 +1,38 @@
+import java.util.*;
+class Solution {
+	
+	public static void main(String args[]) {
+		
+		// Write code here
+		
+		// taking input 
+		Scanner sc = new Scanner(System.in);
+		int N = sc.nextInt();
+
+        // declaring variables for sum 
+		int even = 0;
+		int odd = 0;
+
+		// loop for taking each digit 
+		while(N>0){
+            
+			// taking single digit 
+			int d = N%10;
+
+			// even block 
+			if(d%2==0){
+				even = even + d;
+			}
+			// odd block 
+			else{
+				odd = odd + d;
+			}
+
+			// reducing number 
+			N=N/10;
+		}
+
+		// printing result 
+		System.out.println(even + " " + odd);
+	}
+}
