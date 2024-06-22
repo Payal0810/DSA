@@ -1,0 +1,45 @@
+import java.util.*;
+public class Solution {
+
+
+	public static void main(String[] args) {
+		
+		/* Your class should be named Solution.
+	 	* Read input as specified in the question.
+	 	* Print output as specified in the question.
+		*/
+
+		// taking input 
+		Scanner sc = new Scanner(System.in);
+		int N = sc.nextInt();
+
+		// printing first half 
+		// loop for rows 
+		for(int i=1; i<=N; i++){
+
+			// loop for columns 
+			for(int j=1; j<=(N-i+1); j++){
+				System.out.print(N-i-j+2 + " ");
+			}
+
+			// next line 
+			System.out.println();
+		}
+
+
+			// printing second half 
+			// loop for rows 
+			for(int i=2; i<=N; i++){
+
+				// loop for columns 
+				for(int j=1; j<=i; j++){
+					System.out.print(i-j+1+ " ");
+				}
+
+				// next line 
+				System.out.println();
+			}
+		
+	}
+
+}
