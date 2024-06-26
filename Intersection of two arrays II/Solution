@@ -1,0 +1,27 @@
+public class Solution {
+    
+    public static void intersections(int arr1[], int arr2[]) {
+        // Your code goes here
+        
+        // creating a boolean array to keep track of visited indexes 
+        boolean visited[] = new boolean[arr2.length];
+
+        // loop for first array elements 
+        for(int i=0; i<arr1.length; i++){
+
+            // loop for second array elements 
+            for(int j=0; j<arr2.length; j++){
+
+                // condition to check intersection and visited elements 
+                if(arr1[i]==arr2[j] && !visited[j]){
+                    System.out.print(arr1[i]+" ");
+                    visited[j]=true;
+                    break;
+                }
+            }
+        }
+
+}
+}
+
+
