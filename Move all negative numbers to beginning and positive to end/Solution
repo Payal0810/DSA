@@ -1,0 +1,27 @@
+public class Solution {
+    
+    
+    public static int[] separateNegativeAndPositive(int a[]) {
+     
+    //  two pointers approach 
+    int neg = 0;
+    int pos = 0;
+
+    // llop for iterating the array 
+    while(pos<a.length){
+
+        // checking condition 
+        if(a[pos]<0){
+            
+            // swapping elements 
+            int temp = a[pos];
+            a[pos] = a[neg];
+            a[neg] = temp;
+
+            neg++;
+        }
+        pos++;
+    }
+    return a;
+    }
+}
