@@ -1,0 +1,34 @@
+public class Solution {
+        public static int[] moveZeros(int n, int []a) {
+        // Write your code here.
+        
+        // two pointer approach 
+        
+        // pointer for zeros 
+        int z = 0;
+
+        // pointer for non-zeros 
+        int nz = 0;
+
+        // loop for iterating the array 
+        while(z<n){
+
+            // checking for zeros 
+            if(a[z]!=0){
+
+                // swapping zeros with non-zeros 
+                int temp = a[z];
+                a[z] = a[nz];
+                a[nz] = temp;
+
+                // increamenting non-zeros 
+                nz++;
+            }
+            
+            // increamenting zeros 
+            z++;
+        }
+
+        return a;
+    }
+}
