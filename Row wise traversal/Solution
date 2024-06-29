@@ -1,0 +1,27 @@
+public class Solution {
+    public static int[] printRowWise(int [][]a) {
+        // Write your code here.
+       
+
+        // getting number of rows and columns 
+        int N = a.length;
+        int M = a[0].length;
+
+        // counter for output array 
+        int count = 0;
+
+        // output array 
+        int op[] = new int[N*M];
+
+        // loop for traversing rows 
+        for(int i=0; i<N; i++){
+
+            // loop for traversing columns 
+            for(int j=0; j<M; j++){
+                op[count]=a[i][j];
+                count++;
+            }
+        } 
+        return op;
+    }
+}
