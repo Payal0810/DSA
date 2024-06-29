@@ -1,0 +1,41 @@
+
+public class Solution {
+
+	public static char highestOccuringChar(String str) {
+	   
+	    //    counter 
+	    char ch = str.charAt(0);
+		int maxChar = 0;
+
+		// loop for iterating string 
+		for(int i=0; i<str.length(); i++){
+            
+			// initializing count to zero 
+			int count = 0;
+
+			// another loop for checking counts 
+			for(int j=0; j<str.length(); j++){
+
+				// skipping same index 
+				if(i==j){
+					continue;
+				}
+
+				// checking for count of char 
+				if(str.charAt(i)==str.charAt(j)){
+					count++;
+				}
+
+			}
+			
+			// checking for max count 
+			if(count > maxChar){
+				maxChar = count;
+				ch = str.charAt(i);
+			}
+		}
+
+        return ch;
+	}
+
+}
