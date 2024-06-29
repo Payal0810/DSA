@@ -1,0 +1,31 @@
+
+public class Solution {
+public static String stringReverse(String arr, int start, int end) {
+    // Write your code here.
+   String  revString = "";
+    for(int i = end; i>=start; i--){
+      revString = revString+ arr.charAt(i);
+    }
+return revString;
+  }
+	public static String reverseEachWord(String str) {
+		//Your code goes here
+		int start=0;
+		String finalStr="";
+		int end;
+		String revWord;
+		for(int i =0; i<str.length(); i++){
+			if(str.charAt(i)==' '){
+				end= i-1;
+				revWord = stringReverse(str,start,end);
+		start=i+1;
+		finalStr = finalStr+revWord+" ";
+			}
+        
+		}
+		revWord=stringReverse(str,start,str.length()-1);
+		finalStr = finalStr+revWord;
+		return finalStr;
+	}
+
+}
