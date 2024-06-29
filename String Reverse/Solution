@@ -1,0 +1,18 @@
+import java.util.* ;
+import java.io.*; 
+
+class Solution {
+
+  public static String stringReverse(char[] arr) {
+    // Write your code here.
+    
+    // output string 
+    String revString = "";
+
+    // loop for iterating string 
+    for(int i=0; i<arr.length; i++){
+      revString = arr[i] + revString;
+    }
+    return revString;
+  }
+}
