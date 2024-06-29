@@ -1,0 +1,25 @@
+
+public class Solution {
+
+	public static void printSubstrings(String str) {
+		//Your code goes here
+
+		// substring 
+		String finString = "";
+
+		// loop for start index 
+		for(int i=0; i<str.length(); i++){
+
+			// loop for end index 
+			for(int j=i; j<str.length(); j++){
+
+				finString = str.substring(i,j+1);
+				System.out.println(finString);
+			}
+
+			// making it empty again 
+			finString="";
+		}
+	}
+
+}
