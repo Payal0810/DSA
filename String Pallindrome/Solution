@@ -1,0 +1,26 @@
+
+public class Solution {
+
+	public static boolean isPalindrome(String str) {
+		//Your code goes here
+		
+		// two pointer approach 
+		int l = 0;
+		int r = str.length()-1;
+
+		// loop for iterating string 
+		while(l<r){
+
+			// checking condition 
+			if(str.charAt(l)!=str.charAt(r)){
+				return false;
+			}
+
+			// updating pointers 
+			l++;
+			r--; 
+		}
+		return true;
+	}
+
+}
