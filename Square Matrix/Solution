@@ -1,0 +1,30 @@
+import java.util.*;
+public class Solution {
+    public static String sqrMat(int [][]mat, int n, int m,int diag[]) 
+{
+        // Write your code here.
+        
+        // counter for diag array 
+        int count = 0;
+
+        // checking condition 
+        if(n==m){
+
+            // geting diagonal elements 
+            for(int i=0; i<n; i++){
+                for(int j=0; j<m; j++){
+                    if(i==j){
+                        diag[count]=mat[i][j];
+                        count++;
+                    }
+                }
+            }
+
+           return "YES";
+            
+        }
+        else{
+            return "NO";
+        }
+    }
+}
