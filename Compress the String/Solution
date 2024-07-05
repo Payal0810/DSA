@@ -1,0 +1,35 @@
+public class Solution {
+	public static String getCompressedString(String str) {
+
+        // final string 
+        String op = str.charAt(0)+"";
+
+        // counter for alphabets 
+            int count = 1;
+
+        // loop for iterating through string 
+        for(int i=1; i<str.length(); i++){
+            // checking duplicates 
+            if(str.charAt(i)==str.charAt(i-1)){
+                count++;
+            }
+            else{
+                if(count>1){
+                    op = op + count;
+                    // reseting counter 
+                    count =1;
+                }
+
+                // adding next character 
+                op = op + str.charAt(i);
+            }
+        }  
+        
+        // adding remaining counter for last character 
+        if(count>1){
+            op = op + count;
+        }
+
+        return op;
+	}
+}
