@@ -1,0 +1,22 @@
+import java.util.* ;
+import java.io.*; 
+ 
+public class Solution {
+
+	public static int[][] transpose(int m, int n, int[][] mat) {
+		// Write your code here
+		
+		int ans[][]= new int[n][m];
+		for(int i=0; i<n; i++){
+			for(int j=0; j<m; j++){
+				ans[i][j]=mat[j][i];
+				
+			}
+		
+		} 
+		
+		
+		return ans;
+	}
+
+}
