@@ -1,0 +1,38 @@
+public class Solution {
+    public static int getInversions(int[] arr, int n){
+        //Your code goes here
+       
+        // variable for storing sum 
+        int sum = 0;
+
+        // outer loop for passes 
+        for(int i=0; i<n; i++){
+
+            // setting min element 
+            int min = i;
+
+            // inner loop for comparisons 
+            for(int j=i+1; j<n; j++){
+
+                // comaparison 
+                if(arr[min]>arr[j]){
+                    min = j;
+                }
+            }
+
+            // variable to store difference between indices 
+            int diff = min-i;
+            
+            sum = sum + diff;
+
+            // swapping 
+            int temp = arr[min];
+            arr[min] = arr[i];
+            arr[i] = temp;
+        }
+
+        return sum;
+      
+    }
+
+}
