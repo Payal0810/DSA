@@ -1,0 +1,50 @@
+
+
+public class Solution {
+// method for swapping 
+    public static int[] swap(int[] arr, int a, int b){
+        int temp=arr[a];
+        arr[a]=arr[b];
+        arr[b]=temp;
+        return arr;
+    }
+    public static void sort012(int[] arr, int n){
+        //Your code goes here
+        
+        // initializing pointers 
+        int start = 0;
+        int mid = 0;
+        int end = arr.length-1;
+
+        // loop for iterating array 
+        while(mid<end){
+            
+            // variable for storing element 
+            int d = arr[mid];
+
+            // switch case for cheking 
+            switch(d){
+
+                // case if no. is zero 
+                case 0 :
+                     swap(arr, mid, start);
+                     mid++;
+                     start++;
+                     break;
+
+                // case if no. is 1 
+                case 1 :
+                    mid++;
+                    break;
+
+                // case if no. is 2 
+                case 2 :
+                    swap(arr, mid, end);
+                    end--;
+                    break;
+            }
+        }
+        
+    }
+
+}
