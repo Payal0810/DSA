@@ -1,0 +1,27 @@
+public class Solution {
+
+	public static int arrayEquilibriumIndex(int[] arr){  
+		//Your code goes here
+		
+		// variables 
+		int total = 0;
+		int left = 0;
+		int right = 0;
+		int eq=0;
+
+		// finding total sum of array 
+		for(int i=0; i<arr.length; i++){
+			total += arr[i];
+		}
+        
+		// loop for finding equilibrium index 
+		for(int i=0; i<arr.length; i++){
+			right = total-arr[i]-left;
+			if(left==right){
+				return i;
+			}
+			left +=arr[i];
+		}
+		return -1;
+	}
+}
