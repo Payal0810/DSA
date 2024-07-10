@@ -1,0 +1,39 @@
+public class Solution {
+
+    public static long maximumSumPath(int[] input1, int[] input2) {
+        long maxSum = 0;
+        long sum1 = 0, sum2 = 0;
+        int i = 0, j = 0;
+        int n1 = input1.length, n2 = input2.length;
+
+        // Iterate through both arrays until one of them ends
+        while (i < n1 && j < n2) {
+            if (input1[i] < input2[j]) {
+                sum1 += input1[i++];
+            } else if (input1[i] > input2[j]) {
+                sum2 += input2[j++];
+            } else {
+                // Intersection found, add the maximum of current sums to maxSum
+                maxSum += Math.max(sum1, sum2) + input1[i];
+                // Reset current sums
+                sum1 = 0;
+                sum2 = 0;
+                i++;
+                j++;
+            }
+        }
+
+        // Add remaining elements from the arrays to their corresponding current sums
+        while (i < n1) {
+            sum1 += input1[i++];
+        }
+        while (j < n2) {
+            sum2 += input2[j++];
+        }
+
+        // Add the maximum of remaining current sums to maxSum
+        maxSum += Math.max(sum1, sum2);
+
+        return maxSum;
+    }
+}
