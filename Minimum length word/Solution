@@ -1,0 +1,31 @@
+public class Solution {
+    
+    public static String minLengthWord(String input) {
+        
+        // trimming tring to remove any leading and trailing spaces 
+        String in = input.trim();
+
+        // splitting string into words 
+        String[] op = in.split(" ");
+
+        // minimum word index 
+        int m=0;
+        String f = op[0];
+        int min = f.length();
+
+        // iterating through string array 
+        for(int i=1; i<op.length; i++){
+            String str1 = op[i];
+            int n = str1.length();
+
+            // checking for minimum length 
+            if(n<min){
+                min = n;
+                m = i;
+            }        
+        }
+
+        String g = op[m];
+        return g;
+    }
+}
