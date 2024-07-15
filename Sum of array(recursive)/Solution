@@ -1,0 +1,29 @@
+public class Solution {
+
+
+    // helper function 
+	public static int sum1(int input[], int index){
+
+		// base case 
+		if(index==0){
+			return input[0];
+		}
+
+		// recursive call
+		int smallOutput = input[index]+sum1(input, index-1);
+
+        // returning op 
+		return smallOutput;
+	}
+	public static int sum(int input[]) {
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 */
+
+		//  calling helper function 
+        int g = sum1(input,input.length-1);
+
+        return g;
+	}
+}
