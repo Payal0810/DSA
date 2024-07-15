@@ -1,0 +1,24 @@
+public class Solution {
+    
+    // helper function 
+    public static boolean helper(int[] A, int N, int index){
+
+        // base case 
+        if(index == N-1){
+            return true;
+        }
+
+        // checking condition 
+        if(A[index]>A[index+1]){
+            return false;
+        }
+
+        // recursive call 
+        return helper(A, N, index+1);
+    }
+    public static boolean arraySortedOrNot(int []A, int N) {
+        // Write your code here.
+        
+        return helper(A, N, 0);
+    }
+}
