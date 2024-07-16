@@ -1,0 +1,27 @@
+public class Solution {
+   
+    // helper function 
+    public static boolean helper(String str, int si, int li){
+
+        // base case 
+        if(str.length()==0 || str.length()==1){
+            return true;
+        }
+        
+        if(si>li){
+            return true;
+        } 
+        
+        // checking if first and last element are same 
+        if(str.charAt(si)!=str.charAt(li)){
+            return false;
+        }
+
+        // recursive call 
+        return helper(str, si+1, li-1);
+    }
+    public static boolean isPalindrome(String str) {
+        // Write your code here.
+        return helper(str, 0, str.length()-1);
+    }
+}
