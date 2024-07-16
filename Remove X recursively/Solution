@@ -1,0 +1,22 @@
+
+public class solution {
+
+	// Return the changed string
+	public static String removeX(String input){
+		// Write your code here
+       
+	//    base case 
+	if(input.length()==0){
+		return " ";
+	}
+
+	if(input.charAt(0)=='x'){
+		String op = removeX(input.substring(1));
+		return op;
+	}
+	else{
+		String op = removeX(input.substring(1));
+		return input.charAt(0) + op;
+	}
+	}
+}
