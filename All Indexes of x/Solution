@@ -1,0 +1,36 @@
+
+public class Solution {
+
+	// helper function 
+	public static int[] helper(int input[], int x, int si, int fsf){
+
+		// here fsf is found so far, used to calculate the length of output array 
+
+		// base case 
+		// by the time we reach end of array, we would already have no. of occurences i.e fsf, 
+		// so creating array of that length
+        if(si==input.length){
+			return new int[fsf];
+		}
+
+		// now we have two conditions, if x is found then we will increament both si and fsf 
+		// but if x is not found then we will only increase index
+		if(input[si]==x){
+			int op[] = helper(input, x, si+1, fsf+1);
+			op[fsf]=si;
+			return op;
+		}
+		else{
+			int op[] = helper(input, x, si+1, fsf);
+			return op;
+		}
+	
+	}
+
+	public static int[] allIndexes(int input[], int x) {
+	   
+	   return helper(input, x, 0, 0);
+	
+	}
+	
+}
