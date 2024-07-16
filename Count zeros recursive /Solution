@@ -1,0 +1,27 @@
+
+public class solution {
+     
+	public static int countZerosRec(int input){
+		// Write your code here
+		
+		// base case 
+		if(input==0){
+			return 1;
+		}
+		
+		// because for every input less than 10 % will be give 0 as op 
+		if(input<10){
+			return 0;
+		}
+
+		int count = 0;
+
+	if(input%10==0){
+		count++;
+	}
+
+	return count + countZerosRec(input/10);
+	}
+	
+	
+}
