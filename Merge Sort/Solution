@@ -1,0 +1,67 @@
+
+
+public class Solution {
+    
+    // method to merge two sorted arrays 
+    public static void merge(int[] s1, int[] s2, int[] d){
+
+        // three pointers for thre arrays 
+        int i = 0;
+        int j = 0;
+        int k = 0;
+
+        // loop for traversing both the arrays 
+        while(i<s1.length && j<s2.length){
+            if(s1[i]<s2[j]){
+                d[k]=s1[i];
+                i++;
+            }
+            else{
+                d[k]=s2[j];
+                j++;
+            }
+            k++;
+        }
+
+        // adding remaining elements 
+        while(i<s1.length){
+            d[k]=s1[i];
+            i++;
+            k++;
+        }
+        while(j<s2.length){
+            d[k]=s2[j];
+            j++;
+            k++;
+        }
+    }
+   
+    public static void mergeSort(int[] arr, int l, int r){
+        // Write your code here
+        
+        // base case 
+        if(arr.length==0 || arr.length==1){
+            return;
+        }
+
+        // creating two arrays two divide original array 
+        int b[] = new int[arr.length/2];
+        int c[] = new int[arr.length - b.length];
+
+        // copying elements into half array 
+        for(int i=0; i<b.length; i++){
+            b[i]=arr[i];
+        }
+        for(int i=b.length; i<arr.length; i++){
+            c[i-b.length]=arr[i];
+        }
+
+        // calling merge sort on divided arrays 
+        mergeSort(b, l, r);
+        mergeSort(c, l, r);
+
+        // calling merge method to merge sorted arrays 
+        merge(b,c,arr);
+        
+    }
+}
