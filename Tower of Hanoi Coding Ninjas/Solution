@@ -1,0 +1,26 @@
+
+public class solution {
+
+	public static void towerOfHanoi(int disks, char source, char auxiliary, char destination) {
+		// Write your code here
+        
+		// base case 
+		if(disks==0){
+			return;
+		}
+		if(disks==1){
+			System.out.println(source+" "+destination);
+			return;
+		}
+
+		// first move n-1 disks to auxilary 
+		towerOfHanoi(disks-1, source, destination, auxiliary);
+
+		// then move last disk from source to destination 
+		System.out.println(source+" "+destination);
+
+		// now move n-1 disks from auxilary to destination 
+        towerOfHanoi(disks-1, auxiliary, source, destination);
+	   
+	}
+}
