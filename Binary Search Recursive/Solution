@@ -1,0 +1,25 @@
+public class solution {
+     public static int helper(int[] arr, int si, int ei, int x){
+		 if(si>ei){
+			 return -1;
+		 }
+		 int mid = (si+ei)/2;
+		 if(arr[mid]==x){
+			 return mid;
+		 }
+		 else if(arr[mid]<x){
+			 return helper(arr, mid+1, ei, x);
+		 }
+		 else{
+			 return helper(arr, si, mid-1, x);
+		 }
+	 }
+	// element - number to be searched
+	public static int binarySearch(int input[], int element) {
+		// Write your code here
+        int si = 0;
+		int ei = input.length-1;
+		int op = helper(input, si, ei, element);
+		return op;
+	}
+}
