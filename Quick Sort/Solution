@@ -1,0 +1,52 @@
+
+public class Solution {
+	public static int partition(int[] input,int startIndex, int endIndex){
+		
+		// setting last elemt as pivot element 
+		int pivot = input[endIndex];
+
+		// variable to count elements smaller than pivot 
+		int i = startIndex-1;
+
+		// loop to traverse array 
+		for(int j=startIndex; j<endIndex; j++){
+			if(input[j]<pivot){
+				i++;
+				// swapping smaller element 
+				int temp = input[i];
+				input[i] = input[j];
+				input[j] = temp;
+			}
+		}
+		
+		// making space for pivot 
+		i++;
+
+		// taking pivot at its right position 
+		int temp = input[i];
+		input[i] = pivot;
+		input[endIndex] = temp;
+
+		// returning pivot's correct position 
+		return i;
+	}
+	public static void quickSort(int[] input, int startIndex, int endIndex) {
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * No need to print or return the output.
+		 * Taking input and printing output is handled automatically.
+		 */
+         
+		 if(startIndex<endIndex){
+            
+			// correct position of pivot element 
+			 int pidx = partition(input, startIndex, endIndex);
+
+			//  calling quick sort on two partitioned arrays 
+			quickSort(input, startIndex, pidx-1);
+			quickSort(input, pidx+1, endIndex);
+		 }
+	}
+	
+}
