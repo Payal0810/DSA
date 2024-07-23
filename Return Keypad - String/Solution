@@ -1,0 +1,49 @@
+public class solution {
+
+	// method to return alphabets according to number 
+	public static String keys(int n){
+		String[] s = {" ", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+
+		// returning string according to no. one less than it because string indexing starts from zero 
+		return s[n-1];
+	}
+	public static String[] keypad(int n){
+
+		// base case 
+		if(n==0){
+			String s[] = {""};
+			return s;
+		}
+
+		// recursion for for remaining digits 
+		String smallNum[] = keypad(n/10);
+
+		// finding out last digit 
+		int d = n%10;
+
+		// finding out string associated with last digit 
+		String g = keys(d);
+
+		// now declaring the output array 
+		String op[] = new String[g.length()*smallNum.length];
+
+		// smallNum will take care of remaining digits so we just need to add alphabets of last digits to strings of smallNum 
+		int k = 0; //pointer for output array
+
+		// loop for  traversing smallNum 
+		for(int i=0; i<smallNum.length; i++){
+
+			// loop for traversing string associated with last digit 
+			for(int j=0; j<g.length(); j++){
+				op[k]=smallNum[i]+g.charAt(j);
+				k++;
+			}
+
+		}
+
+		// returning output string array 
+			return op;
+	
+	}
+	
+}
