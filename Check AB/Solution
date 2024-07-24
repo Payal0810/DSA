@@ -1,0 +1,24 @@
+public class Solution {
+    public static boolean helper(String input, int index){
+		if(index>=input.length()){
+			return true;
+		}
+		if(input.charAt(index)!='a'){
+			return false;
+		}
+		if(index+1 <input.length() && index+2 < input.length()){
+			if(input.charAt(index+1)=='b' && input.charAt(index+2)=='b'){
+				return helper(input, index+3);
+			}
+		}
+					return helper(input, index+1);
+
+	}
+	public static boolean checkAB(String input) {
+		// Write your code here
+        if(input.charAt(0)!='a'){
+			return false;
+		}
+		return helper(input, 0);
+	}
+}
