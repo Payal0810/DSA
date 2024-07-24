@@ -1,0 +1,22 @@
+
+public class solution {
+
+	// Return the updated string
+	public static String addStars(String s) {
+		// Write your code here
+
+		// base case 
+		if(s.length()<=1){
+			return s;
+		}
+        
+		// checking for adjacent identical char 
+	    if(s.charAt(0)==s.charAt(1)){
+			return s.charAt(0)+"*"+addStars(s.substring(1));
+		}
+		else{
+			return s.charAt(0)+addStars(s.substring(1));
+		}
+
+	}
+}
