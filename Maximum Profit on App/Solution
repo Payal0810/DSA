@@ -1,0 +1,35 @@
+import java.util.Arrays;
+
+public class solution {
+
+	public static int maximumProfit(int budget[]) {
+		// Write your code here
+	    
+		// sorting the array 
+		Arrays.sort(budget);
+
+		// not setting length of array 
+		int n = budget.length;
+
+		// initializing maximum profit to zero 
+		int maxProfit = 0;
+
+		// iterating through each budget
+		for(int i=0; i<n; i++){
+
+			//no. of people who can afford this budget 
+            int m = n-i;
+
+			// calculating current profit 
+			int currentProfit = m*budget[i];
+
+            // comparing current profit and maximum profit to get maximum profit 
+			if(currentProfit>maxProfit){
+				maxProfit=currentProfit;
+			}
+		}
+
+		return maxProfit;
+	}
+
+}
