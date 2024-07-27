@@ -1,0 +1,40 @@
+import java.util.Scanner;
+class Helper {
+
+	
+	// Method 1
+	// Multiplication of 2 numbers
+	public int mul(int num1, int num2){
+		int mul = num1*num2;
+		System.out.println(mul);
+		return mul;
+	}
+	// Method 2
+	// // Multiplication of 3 numbers
+	public int mul(int num1, int num2, int num3){
+		int mul = num1*num2*num3;
+		System.out.println(mul);
+		return mul;
+	}
+}
+
+// Class 2
+class Solution {
+
+	// Main driver method
+	public static void main(String[] args)
+	{
+
+		// Take input using Scanner and print the output .
+		Scanner sc = new Scanner(System.in);
+
+		int num1 = sc.nextInt();
+		int num2 = sc.nextInt();
+		int num3 = sc.nextInt();
+
+		Helper h = new Helper();
+
+		h.mul(num1, num2);
+		h.mul(num1, num2, num3);
+	}
+}
