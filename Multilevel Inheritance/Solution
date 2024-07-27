@@ -1,0 +1,49 @@
+import java.util.* ;
+
+
+
+import java.io.*; 
+
+// Create the classes here
+
+class Solution {
+	
+	static public class GrandFather{
+		public String grandFatherName;
+
+		public GrandFather(String name){
+			grandFatherName = name;
+		}
+	}
+
+	static public class Father extends GrandFather{
+		public String fatherName;
+
+		public Father(String name){
+			super("Suresh");
+			fatherName = name;
+		}
+	}
+
+	static public class Son extends Father{
+		public String sonName;
+
+		public Son(String name){
+			super("Ramesh");
+			sonName = name;
+		}
+
+		public void print(){
+			System.out.println("sonname: " + sonName);
+			System.out.println("fathername: " + fatherName);
+			System.out.println("grandfather: " + grandFatherName);
+		}
+	}
+	public static void main(String args[]) {
+		
+		// Write your code here
+
+		Son s = new Son("Saurabh");
+		s.print();
+	}
+}
