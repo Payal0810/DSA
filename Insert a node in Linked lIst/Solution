@@ -1,0 +1,59 @@
+/*
+
+	Following is the Node class already written for the Linked List
+
+	class Node<T> {
+    	T data;
+    	Node<T> next;
+    
+    	public Node(T data) {
+        	this.data = data;
+    	}
+	}
+
+*/
+
+public class Solution {
+
+	public static Node<Integer> insert(Node<Integer> head, int pos, int data){
+		//Your code goes here
+
+		// create a node to be added 
+		Node<Integer> currentNode = new Node<Integer>(data);
+
+
+		// if insertion is at the beginning 
+		if(pos==0){
+			currentNode.next = head;
+			return currentNode;
+		}
+
+		// storing head in a temperory variable 
+		Node temp = head;
+
+		// counter to find out position 
+		int count = 0;
+
+		// loop to traverse through linked list 
+		while(temp!=null && count<pos-1){
+
+			count++;
+			temp=temp.next;
+
+		}
+
+		// if position is greater than the length of linked list 
+		if(temp==null){
+			return head;
+		}
+
+		// otherwise we encountered one less than position 
+		currentNode.next = temp.next;
+		temp.next = currentNode;
+
+		// returning the linked list 
+		return head;
+
+		}
+	}
+
