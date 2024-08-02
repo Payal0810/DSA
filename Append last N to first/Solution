@@ -1,0 +1,79 @@
+/*
+
+	Following is the Node class already written for the Linked List
+
+	class Node<T> {
+    	T data;
+    	Node<T> next;
+    
+    	public Node(T data) {
+        	this.data = data;
+    	}
+	}
+
+*/
+
+public class Solution {
+
+	public static Node<Integer> appendLastNToFirst(Node<Integer> head, int n) {
+		//Your code goes here
+
+		// Edge case: If the list is empty or n is 0, no change is needed
+        if (head == null || n == 0) {
+            return head;
+        }
+
+		// counter to know no. of elements in linked list 
+		int count = 0;
+
+		// storing head in a temporaty variable 
+		Node<Integer> temp = head;
+
+		// loop to find lengthof the linked list 
+		while(temp!=null){
+			count++;
+			temp=temp.next;
+		}
+
+		  // If n is equal to or greater than the length of the list, no change is needed
+        if (n >= count) {
+            return head;
+        }
+
+
+		// getting index no. where link needs to be breaked 
+		int d = count - n;
+
+		// again creating a temperory variable to store update head 
+		Node<Integer> newTemp = head;
+
+		// counter for d 
+		int dCount = 0;
+
+		// looping over linked list till we find d 
+		while(dCount<d-1){
+			dCount++;
+			newTemp = newTemp.next;
+		}
+
+		// updating the head 
+		Node<Integer> newHead = newTemp.next;
+
+		// not deleting the link 
+		newTemp.next = null;
+
+		// finding the end of new head list to connect to the original head 
+		Node<Integer> tail = newHead;
+
+		while(tail.next != null){
+			tail = tail.next;
+		}
+
+        // Connect the end of the new head list to the original head
+		tail.next = head;
+
+		return newHead;
+
+	}
+
+}
