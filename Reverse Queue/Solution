@@ -1,0 +1,26 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Solution {
+
+	public static void reverseQueue(Queue<Integer> input) {
+		//Your code goes here
+
+		// base case 
+		if(input.isEmpty()){
+			return;
+		}
+
+
+        //  dequeue 
+		int data = input.poll();
+
+
+		// recursive call 
+		reverseQueue(input);
+
+		// enqueue
+		input.add(data);
+	}
+
+}
