@@ -1,0 +1,41 @@
+// import javax.swing.tree.TreeNode;
+
+public class Solution {
+
+/*	TreeNode structure 
+ * 
+ * class TreeNode<T> {
+		T data;
+		ArrayList<TreeNode<T>> children;
+
+		TreeNode(T data){
+			this.data = data;
+			children = new ArrayList<TreeNode<T>>();
+		}
+	}*/
+	
+	
+	
+	public static int sumOfAllNode(TreeNode<Integer> root){
+	      
+		  if(root == null){
+			  return 0;
+		  }
+
+		//  variable to store sum of nodes 
+		// initializing it's value with the root value 
+		int sum = root.data;
+
+		//   loop to traverse all childrens of root 
+		for(int i=0; i<root.children.size(); i++){
+			
+			// creating child to get all childrens of current children of root 
+			TreeNode<Integer> child = root.children.get(i);
+
+            sum += sumOfAllNode(child);
+
+		}
+
+		return sum;
+	}
+}
