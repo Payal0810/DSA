@@ -1,0 +1,78 @@
+
+/*
+
+    Following is the Node class already written for the Linked List
+
+    class Node<T> {
+        T data;
+        Node<T> next;
+    
+        public Node(T data) {
+            this.data = data;
+        }
+    }
+
+*/
+
+
+public class Solution {
+
+	public static Node<Integer> evenAfterOdd(Node<Integer> head) {
+		//Your code goes here
+
+        if(head == null || head.next == null){
+            return head;
+        }
+
+        // seperating notes according to even and odd 
+        Node<Integer> oddHead = null, oddTail = null;
+        Node<Integer> evenHead = null, evenTail = null;
+        Node<Integer> temp = head;
+
+        // iterating theough linked list 
+        while(temp!=null){
+
+            // checking for even or odd node 
+            if(temp.data%2 != 0){
+
+                // checking if oddhead is null 
+                if(oddHead==null){
+                    oddHead=temp;
+                    oddTail=temp;
+                }
+                else{
+                    oddTail.next = temp;
+                    oddTail=temp;
+                }
+            }
+            else{
+                 // checking if even head is null 
+                if(evenHead==null){
+                    evenHead=temp;
+                    evenTail=temp;
+                }
+                else{
+                    evenTail.next = temp;
+                    evenTail=temp;
+                }
+        }
+        temp = temp.next;
+	}
+
+    // if odd list is empty then return only even list 
+    if(oddHead==null){
+        return evenHead;
+    }
+
+    // if even list is empty then return only even list 
+    if(evenHead==null){
+        return oddHead;
+    }
+
+    // connecting odd list to even list 
+    oddTail.next = evenHead;
+    evenTail=null;
+
+    return oddHead;
+}
+}
