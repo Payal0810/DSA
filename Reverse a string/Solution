@@ -1,0 +1,20 @@
+class Solution {
+    public void reverseString(char[] s) {
+        
+        // two pointers to traverse array 
+        int l = 0;
+        int r = s.length-1;
+
+        while(l<=r){
+
+            // swapping characters between left and right pointer 
+            char temp = s[l];
+            s[l]=s[r];
+            s[r]=temp;
+
+            // updating pointers 
+            l++;
+            r--;
+        }
+    }
+}
