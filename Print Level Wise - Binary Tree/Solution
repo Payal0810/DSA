@@ -1,0 +1,71 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+/*
+	
+	Following is the structure used to represent the Binary Tree Node
+
+	class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+*/
+
+public class Solution {
+
+	public static void printLevelWise(BinaryTreeNode<Integer> root) {
+		//Your code goes here
+
+		// checking if it is empty tree 
+		if(root==null){
+			return;
+		}
+
+		// create a queue 
+		Queue<BinaryTreeNode<Integer>> pendingChild = new LinkedList<BinaryTreeNode<Integer>>();
+
+		// now insert root into the queue
+		pendingChild.add(root);
+
+		// traverse until queue is not empty 
+		while(!pendingChild.isEmpty()){
+
+			// take first element out of queue 
+			BinaryTreeNode<Integer> front = pendingChild.poll();
+
+			System.out.print(front.data+":");
+
+			// checking for left child of front 
+			if(front.left == null){
+				System.out.print("L:-1,");
+			}
+			else{
+				System.out.print("L:"+front.left.data+",");
+
+				// adding left element to the queue 
+				pendingChild.add(front.left); 
+			}
+
+			// checking for right child of front 
+			if(front.right == null){
+				System.out.print("R:-1");
+			}
+			else{
+				System.out.print("R:"+front.right.data);
+
+				// adding right element to the queue 
+				pendingChild.add(front.right); 
+			}
+			System.out.println();
+		}
+	}
+	
+}
