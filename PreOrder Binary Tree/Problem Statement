@@ -1,0 +1,28 @@
+You are given a ‘Binary Tree’.
+
+Return the preorder traversal of the Binary Tree.
+
+Sample Input 1:
+1 2 3 5 4 6 7 -1 -1 -1 -1 -1 -1 -1 -1
+
+
+ Sample Output 1:
+1 2 5 4 3 6 7
+
+
+Sample Input 2:
+5 6 10 2 3 -1 -1 -1 -1 -1 9 -1 -1
+
+
+Sample Output 2:
+5 6 2 3 9 10
+
+Expected Time Complexity:
+Try to do this in O(n).
+
+
+Constraints:
+1 <= n <= 100000
+where 'n' is the number of nodes in the binary tree.
+
+Time Limit: 1 sec
