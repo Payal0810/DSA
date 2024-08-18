@@ -1,0 +1,67 @@
+
+
+/*
+
+	Following is the Node class already written for the Linked List
+
+	class Node<T> {
+    	T data;
+    	Node<T> next;
+    
+    	public Node(T data) {
+        	this.data = data;
+    	}
+	}
+
+*/
+
+public class Solution {
+
+    // function to reverse a linked list 
+	public static Node<Integer> reverse(Node<Integer> head){
+		Node<Integer> prev = null;
+		Node<Integer> curr = head;
+		
+		while(curr != null){
+			Node<Integer> temp = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = temp;
+		}	
+		return prev;
+	}
+	public static boolean isPalindrome(Node<Integer> head) {
+		//Your code goes here
+
+		if(head == null || head.next == null){
+			return true;
+		}
+
+		// finding midpoint of Linked List 
+		Node<Integer> slow = head;
+		Node<Integer> fast = head;
+
+		while (fast != null && fast.next != null){
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+
+		// two seperated linked list 
+		Node<Integer> l1 = head;
+		Node<Integer> l2 = reverse(slow);
+
+		// boolean variable 
+		boolean isPalindrome_ = true;
+
+		while(l2 != null){
+			if(l1.data != l2.data){
+				return false;
+			}
+			l1 = l1.next;
+			l2 = l2.next;
+		}
+
+		return isPalindrome_;
+	}
+
+}
