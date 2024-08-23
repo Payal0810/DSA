@@ -1,0 +1,73 @@
+/*
+
+    Following is the Node class already written for the Linked List
+
+    class Node<T> {
+        T data;
+        Node<T> next;
+    
+        public Node(T data) {
+            this.data = data;
+        }
+    }
+
+*/
+
+public class Solution {
+
+	public static Node<Integer> swapNodes(Node<Integer> head, int i, int j) {
+		//Your code goes here
+
+        // declaring some variables 
+        Node<Integer> iCurr = head, jCurr =head;
+        Node<Integer> iTail = null, jTail =null;
+
+        // checking if i and j are same 
+        if(i==j){
+            return head;
+        }
+
+        // loop for finding ith element 
+        for(int index=0; index<i && iCurr != null; index++){
+            iTail = iCurr;
+            iCurr = iCurr.next;
+        }
+
+        // loop for finding jth element 
+        for(int index=0; index<j && jCurr != null; index++){
+            jTail = jCurr;
+            jCurr = jCurr.next;
+        }
+
+        // now check if ith or jth element is null 
+        if(iCurr==null || jCurr==null){
+            return head;
+        }
+
+        // if tail is not null means curr element is not head
+        if(iTail != null){
+            iTail.next = jCurr;
+        }
+        else{
+            head = jCurr; //if ith node was head
+        }
+
+        // if tail is not null means curr element is not head
+        if(jTail != null){
+            jTail.next = iCurr;
+        }
+        else{
+            head = iCurr; //if ith node was head
+        }
+
+
+        // now swapping pointers 
+        Node<Integer> temp = iCurr.next;
+        iCurr.next = jCurr.next;
+        jCurr.next = temp;
+
+        return head;
+
+	}
+
+}
