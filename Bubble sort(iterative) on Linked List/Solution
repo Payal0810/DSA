@@ -1,0 +1,73 @@
+/*
+
+	Following is the Node class already written for the Linked List
+
+	class Node<T> {
+    	T data;
+    	Node<T> next;
+    
+    	public Node(T data) {
+        	this.data = data;
+    	}
+	}
+
+*/
+
+public class Solution {
+
+    // function to find length of linked list 
+	public static int getLength(Node<Integer> head){
+
+		// base case 
+		if(head==null){
+			return 0;
+		}
+
+		return 1 + getLength(head.next);
+	}
+
+	public static Node<Integer> bubbleSort(Node<Integer> head) {
+		//Your code goes here
+
+		// getting length of linked list 
+		int n = getLength(head);
+
+		// declaring current and previous pointer 
+		Node<Integer> prev = null;
+		Node<Integer> curr = head;
+
+		// iterating over linked list 
+		for(int i=0; i<n; i++){
+
+			while(curr.next != null){
+
+				if(curr.data <= curr.next.data){
+
+					// we need to swap then 
+
+					// first check if swapping is taking place at head 
+					if(prev != null){
+						
+						Node<Integer> temp = curr.next.next;
+						curr.next.next = curr;
+						prev.next = curr.next;
+                        curr.next = temp;
+						prev = prev.next;
+					}
+					else{
+						head = curr.next;
+						curr.next = head.next;
+						head.next = curr;
+						prev = head;
+					}
+				}
+				else{
+					prev = curr;
+					curr = curr.next;
+				}
+			}
+		}
+
+		return head;
+	}
+}
