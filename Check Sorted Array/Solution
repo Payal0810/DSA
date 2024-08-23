@@ -1,0 +1,23 @@
+public class Solution {
+    public static int isSorted(int n, int []a) {
+        // Write your code here.
+
+        // ariable to store result 
+        boolean result = true;
+
+        // iterate over the array 
+        for(int i=1; i<n; i++){
+            if(a[i-1]>a[i]){
+               result = false;
+               break;
+            }
+        }
+
+        // checking result 
+        if(result == true){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+}
