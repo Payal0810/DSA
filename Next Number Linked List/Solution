@@ -1,0 +1,74 @@
+/*************** 
+ * Following is the Node class already written 
+class LinkedListNode<T> {
+	T data;
+	LinkedListNode<T> next;
+
+	public LinkedListNode(T data) {
+		this.data = data;
+	}
+}
+ ***************/
+
+public class Solution {
+
+    // helper function 
+	public static LinkedListNode<Integer> reverse(LinkedListNode<Integer> head){
+
+		LinkedListNode<Integer> prev = null;
+		LinkedListNode<Integer> curr = head;
+
+        while(curr != null){
+			LinkedListNode<Integer> next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+		}
+
+		return prev;
+           
+	}
+
+	public static LinkedListNode<Integer> nextLargeNumber(LinkedListNode<Integer> head) {
+       
+	    //   base case 
+	    if(head == null){
+		    return null;
+	    }
+
+		// reverse the linked list to start from the last element 
+		head  = reverse(head);
+
+		// carry to add 1 
+		int carry = 1;
+
+		// storing head in temporary variable 
+	    LinkedListNode<Integer> curr = head;
+
+		// iterating over the linked list 
+		while(curr != null){
+			int data = curr.data + carry;
+			curr.data = data%10;
+			carry = data/10;
+
+			if(carry == 0){
+				break; //since there is no carry so no changes
+			}
+
+			if(curr.next == null && carry>0){
+				// if carry is there after last node then we need to add one extra node 
+				curr.next = new LinkedListNode<>(carry);
+				carry = 0;
+			}
+
+			curr = curr.next;
+		}
+
+		// reverse back the list 
+		head = reverse(head);
+
+	  return head;
+	}
+
+
+}
