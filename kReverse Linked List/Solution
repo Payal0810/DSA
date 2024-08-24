@@ -1,0 +1,56 @@
+
+class DoubleNode {
+    Node<Integer> head;
+    Node<Integer> tail;
+}
+
+public class Solution {
+
+    public static Node<Integer> kReverse(Node<Integer> head, int k) {
+        if (head == null || k <= 1) {
+            return head;
+        }
+
+        Node<Integer> h1 = head, h2, t1 = head;
+        int count = 1;
+
+        // Move t1 to the kth node in the list
+        while (count < k && t1.next != null) {
+            t1 = t1.next;
+            count++;
+        }
+
+        // If we have fewer than k nodes, return head as is
+        h2 = t1.next; // Mark the node after the kth node
+        t1.next = null; // Break the list after the kth node
+
+        // Reverse the first k nodes
+        DoubleNode ans = reversePart(h1);
+
+        // Recursively reverse the remaining part of the list
+        Node<Integer> secondHead = kReverse(h2, k);
+
+        // Attach the reversed part to the remaining part
+        ans.tail.next = secondHead;
+
+        // Return the new head of the reversed list
+        return ans.head;
+    }
+
+    private static DoubleNode reversePart(Node<Integer> head) {
+        if (head == null || head.next == null) {
+            DoubleNode ans = new DoubleNode();
+            ans.head = head;
+            ans.tail = head;
+            return ans;
+        }
+
+        // Recursive reversal of the sublist
+        DoubleNode ans = reversePart(head.next);
+        ans.tail.next = head;
+        head.next = null;
+        ans.tail = head; // Update the tail to the current head
+
+        return ans;
+    }
+}
