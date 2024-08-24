@@ -1,0 +1,51 @@
+
+
+/* 
+
+    Following is the class used to represent the Node of a Singly Linked List
+
+    class Node<T> {
+        public T data;
+        public Node<T> next;
+
+        public Node(T data) {
+            this.setData(data);
+            this.next = null;
+        }
+
+        public T getData() {
+            return data;
+        }
+
+        public void setData(T data) {
+            this.data = data;
+        }
+
+    }
+*/
+
+public class Solution {
+
+    public static void deleteAlternateNodes(Node<Integer> head) {
+        //Your code goes here
+
+        Node<Integer> curr = head;
+
+        Node <Integer> next = curr.next;
+
+        while(curr != null && curr.next != null){
+
+            // stire the node to be deleted 
+            Node<Integer> temp = curr.next;
+
+            // update the next pointer to skip the node 
+            curr.next = temp.next;
+
+            // set the deleted node's next to null 
+            temp.next = null;
+
+            // move current to next element 
+            curr = curr.next;
+        }
+    }
+}
