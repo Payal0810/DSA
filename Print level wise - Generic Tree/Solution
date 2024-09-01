@@ -1,0 +1,60 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Solution {
+
+/*	TreeNode structure 
+ * 
+ * class TreeNode<T> {
+		T data;
+		ArrayList<TreeNode<T>> children;
+
+		TreeNode(T data){
+			this.data = data;
+			children = new ArrayList<TreeNode<T>>();
+		}
+	}*/
+	
+	
+	
+	public static void printLevelWise(TreeNode<Integer> root){
+		/* Your class should be named Solution 
+ 		 * Don't write main(). 
+		 * Don't read input, it is passed as function argument. 
+		 * Print output and don't return it. 
+		 * Taking input is handled automatically. 
+		 */
+         
+		//  initializing a queue 
+		Queue<TreeNode<Integer>> pendingNodes = new LinkedList<>();
+
+		// adding root in queue 
+		pendingNodes.add(root);
+
+		while(!pendingNodes.isEmpty()) {
+			// Here is the key change: we determine the number of nodes at the current level
+			int nodeCount = pendingNodes.size();
+
+			// Loop through all nodes at the current level
+			while(nodeCount > 0) {
+				// removing first element from queue 
+				TreeNode<Integer> front = pendingNodes.remove();
+            
+				// printing node 
+				System.out.print(front.data + " ");
+
+				// adding children of front in queue 
+				for(int i = 0; i < front.children.size(); i++) {
+					pendingNodes.add(front.children.get(i));
+				}
+
+				nodeCount--; // Decrease the node count
+			}
+
+			// Move to the next line after each level
+            System.out.println();
+		}
+
+	}
+		
+}
