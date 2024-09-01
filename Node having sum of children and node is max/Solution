@@ -1,0 +1,62 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Solution {
+
+/*	TreeNode structure 
+ * 
+ * class TreeNode<T> {
+		T data;
+		ArrayList<TreeNode<T>> children;
+
+		TreeNode(T data){
+			this.data = data;
+			children = new ArrayList<TreeNode<T>>();
+		}
+	}*/
+	
+	
+	public static TreeNode<Integer> maxSumNode(TreeNode<Integer> root){
+		// Write your code here
+
+		// base case 
+		if(root == null){
+			return null;
+		}
+
+		// queue to get all nodes in tree 
+		Queue<TreeNode<Integer>> allNodes = new LinkedList<>();
+
+		// adding root in queue 
+		allNodes.add(root);
+
+		int sum = Integer.MIN_VALUE;
+        TreeNode<Integer> ansNode = null;
+
+		while(!allNodes.isEmpty()){
+
+			// taking out first element 
+			TreeNode<Integer> front = allNodes.remove();
+            
+			int currSum = front.data;
+			
+
+			// traversing through all nodes of front 
+			for(int i=0; i<front.children.size(); i++){
+				currSum += front.children.get(i).data;
+
+				// adding childrens in queue 
+				allNodes.add(front.children.get(i));
+			}
+
+			if(currSum>sum){
+				sum = currSum;
+				ansNode = front;
+			}
+		}
+
+		return ansNode;
+	}
+	
+		
+}
