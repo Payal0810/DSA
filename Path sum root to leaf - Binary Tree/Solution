@@ -1,0 +1,62 @@
+import java.util.ArrayList;
+
+/*
+	
+	Following is the structure used to represent the Binary Tree Node
+
+	class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+*/
+
+public class Solution {
+    
+	public static void rootToLeafPathsSumToKHelper(BinaryTreeNode<Integer> root, ArrayList<Integer> path,int k) {
+		//Your code goes here
+
+		// Base case
+		if (root == null) {
+			return;
+		}
+
+		// Add the current node to the path
+		path.add(root.data);
+
+		// Subtract the current node's value from k
+		k -= root.data;
+
+		// If we reach a leaf node and k becomes 0, print the path
+		if (root.left == null && root.right == null && k == 0) {
+			for (int i : path) {
+				System.out.print(i + " ");
+			}
+			System.out.println();
+		}
+
+		// Recur for left and right subtrees
+		rootToLeafPathsSumToKHelper(root.left, path, k);
+		rootToLeafPathsSumToKHelper(root.right, path, k);
+
+		// Backtrack: remove the current node from the path
+		path.remove(path.size() - 1);
+		
+	}
+	public static void rootToLeafPathsSumToK(BinaryTreeNode<Integer> root, int k) {
+		//Your code goes here
+
+		// Initialize path list and call the helper method
+		ArrayList<Integer> path = new ArrayList<>();
+		rootToLeafPathsSumToKHelper(root, path, k);
+
+	}
+
+}
