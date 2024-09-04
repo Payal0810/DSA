@@ -1,0 +1,47 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+/*
+	
+	Following is the structure used to represent the Binary Tree Node
+
+	class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+			this.left = null;
+			this.right = null;
+		}
+	}
+
+*/
+
+public class Solution {
+
+	public static void insertDuplicateNode(BinaryTreeNode<Integer> root) {
+		//Your code goes here
+
+		// base case 
+		if(root==null){
+			return;
+		}
+
+		// Create a duplicate node with the same data
+		BinaryTreeNode<Integer> duplicateNode = new BinaryTreeNode<>(root.data);
+
+		// The duplicate node's left child becomes the original left child
+		duplicateNode.left = root.left;
+
+		// Insert the duplicate node as the new left child of the root
+		root.left = duplicateNode;
+
+
+		// Recursively call the function on the original left and right subtrees
+		insertDuplicateNode(duplicateNode.left);
+		insertDuplicateNode(root.right);
+		}
+	}
+	
