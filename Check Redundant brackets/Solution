@@ -1,0 +1,35 @@
+import java.util.Stack;
+
+public class Solution {
+
+	public static boolean checkRedundantBrackets(String expression) {
+		//Your code goes here
+
+		Stack<Character> stack = new Stack<>();
+
+		// iterating through expression 
+		for(int i=0; i<expression.length(); i++){
+
+			// push everything until we find a closing bracket 
+			if(expression.charAt(i) != ')'){
+				stack.push(expression.charAt(i));
+			}
+			else{
+				int count = 0; //to keep track of useful infprmation
+                while(!stack.isEmpty() && stack.peek()!='('){
+					count++;
+			        stack.pop();
+				}
+
+				// remove opening bracket 
+				stack.pop();
+
+				if(count<=1){
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+}
