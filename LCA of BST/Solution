@@ -1,0 +1,50 @@
+public class Solution {
+
+	/*
+	 * Binary Tree Node class
+	 * 
+	 * class BinaryTreeNode<T> { T data; BinaryTreeNode<T> left; BinaryTreeNode<T> right;
+	 * 
+	 * public BinaryTreeNode(T data) { this.data = data; } }
+	 */
+
+
+	
+	  // Function to check if a value exists in the BST
+    public static boolean exists(BinaryTreeNode<Integer> root, int value) {
+        if (root == null) return false;
+        if (root.data == value) return true;
+        return value < root.data ? exists(root.left, value) : exists(root.right, value);
+    }
+
+    // Function to find the LCA of two nodes in a BST
+    public static BinaryTreeNode<Integer> findLCA(BinaryTreeNode<Integer> root, int a, int b) {
+        if (root == null) return null;
+
+        if (a < root.data && b < root.data) {
+            return findLCA(root.left, a, b);
+        }
+
+        if (a > root.data && b > root.data) {
+            return findLCA(root.right, a, b);
+        }
+
+        return root; // This is the LCA
+    }
+
+    public static int getLCA(BinaryTreeNode<Integer> root, int a, int b) {
+        // Check if both nodes exist
+        boolean aExists = exists(root, a);
+        boolean bExists = exists(root, b);
+
+        if (!aExists && !bExists) return -1;
+        if (!aExists) return b;
+        if (!bExists) return a;
+
+        // Find the LCA if both nodes exist
+        BinaryTreeNode<Integer> lca = findLCA(root, a, b);
+        return lca != null ? lca.data : -1;
+    }
+}
+
+
