@@ -1,0 +1,65 @@
+import java.util.LinkedList;
+
+public class Solution {
+
+	/*
+	 * Binary Tree Node class
+	 * 
+	 * class BinaryTreeNode<T> { T data; BinaryTreeNode<T> left; BinaryTreeNode<T>
+	 * right;
+	 * 
+	 * public BinaryTreeNode(T data) { this.data = data; } }
+	 */
+
+	/*
+	 * LinkedList Node Class
+	 *
+	 * 
+	 * class LinkedListNode<T> { T data; LinkedListNode<T> next;
+	 * 
+	 * public LinkedListNode(T data) { this.data = data; } }
+	 */
+
+	//  variables for head and previous node 
+	static LinkedListNode<Integer> head = null;
+	static LinkedListNode<Integer> prev = null;
+
+    // helper function 
+	public static void helper(BinaryTreeNode<Integer> root){
+
+		// base case 
+		if(root == null){
+			return;
+		}
+
+		// traverse left subtree 
+		helper(root.left);
+
+		// creating a node of current root 
+		LinkedListNode<Integer> newNode = new LinkedListNode<>(root.data);
+
+		// if this node is first node then add as head 
+		if(head==null){
+			head = newNode;
+		}
+		else{
+			prev.next = newNode;
+		}
+
+		// update previous node 
+		prev = newNode;
+
+        // now traverse right subtree 
+		helper(root.right);
+
+        
+	}
+
+	public static LinkedListNode<Integer> constructLinkedList(BinaryTreeNode<Integer> root) {
+         
+		//  call helper function 
+		helper(root);
+		return head;
+		
+	}
+}
