@@ -1,0 +1,15 @@
+import java.util.*;
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        
+        // sorting the array 
+        Arrays.sort(nums);
+
+        int n = nums.length/2;
+
+        return nums[n];
+    }
+}
+
+// Since the majority element appears more than n/2 times, once the array is sorted, the majority element will always appear at index n/2 (the middle index).
