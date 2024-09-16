@@ -1,0 +1,40 @@
+public class Solution {
+
+	/*
+	 * Binary Tree Node class
+	 * 
+	 * class BinaryTreeNode<T> { T data; BinaryTreeNode<T> left; BinaryTreeNode<T>
+	 * right;
+	 * 
+	 * public BinaryTreeNode(T data) { this.data = data; } }
+	 */
+    
+	// helper function
+	public static int helper(BinaryTreeNode<Integer> root, int sum){
+
+		// base case 
+		if(root == null){
+			return sum; //return sum so far
+		}
+
+		// first calculate right sum to handle elementsngreater than root
+		sum = helper(root.right, sum);
+
+		// now update roots data 
+		root.data = sum+root.data;
+
+		// update sum 
+		sum = root.data;
+
+		// now calculate left sum 
+		sum = helper(root.left, sum);
+
+		return sum;
+	}
+
+
+	public static void replaceWithLargerNodesSum(BinaryTreeNode<Integer> root) {
+		// Write your code here
+        helper(root, 0);
+	}
+}
