@@ -1,0 +1,39 @@
+
+public class Solution {
+
+	public static int countBracketReversals(String input) {
+		//Your code goes here
+
+		// if expression is off odd length then it can't be of balanced 
+		if(input.length()%2 != 0){
+			return -1;
+		}
+
+		// two variables to keep track of unmatched brackets 
+		int open = 0;
+		int close =  0;
+
+		// traversing through the expression
+		for(int i=0; i<input.length(); i++){
+			char ch = input.charAt(i);
+
+			if(ch == '{'){
+				open++;
+			}
+			else{
+				if(open>0){
+					open--; //balancing
+				}
+				else{
+					close++; //unmatched bracket
+				}
+			}
+		}
+
+		// now calculatig no. of reversals 
+		int reversals = (open+1)/2 + (close+1)/2;
+
+		return reversals;
+	}
+
+}
