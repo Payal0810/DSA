@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.PriorityQueue;
+
+public class Solution {
+
+	public static ArrayList<Integer> kSmallest(int n, int[] input, int k) {
+		// Write your code here
+        
+		// declare max priority queue 
+		PriorityQueue<Integer> max = new PriorityQueue<>(Collections.reverseOrder());
+
+		// now add first k elements in priority queue 
+		for(int i=0; i<k; i++){
+			max.add(input[i]);
+		}
+        
+		// comapring remaining elements 
+		for(int i=k; i<input.length; i++){
+			if(max.peek()>input[i]){
+				max.poll(); //remove largest element
+				max.add(input[i]); //add current element
+			}
+		}
+
+		// ouput 
+		ArrayList ans = new ArrayList<>();
+		while(!max.isEmpty()){
+			ans.add(max.poll());
+		}
+
+		return ans;
+
+	}
+}
