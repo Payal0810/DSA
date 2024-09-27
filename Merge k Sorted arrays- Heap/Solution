@@ -1,0 +1,38 @@
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+
+public class Solution {
+
+	public static ArrayList<Integer> mergeKSortedArrays(ArrayList<ArrayList<Integer>> input) {
+
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * Return output and don't print it.
+	 	 * Taking input and printing output is handled automatically.
+        */
+
+        //  declaring min heap 
+		PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+		// output arraylist 
+		ArrayList<Integer> ans = new ArrayList<>();
+
+		// adding all the elements in min heap 
+		for(int i=0; i<input.size(); i++){
+			for(int j=0; j<input.get(i).size(); j++){
+				pq.add(input.get(i).get(j));
+			}
+		}
+
+		// adding elements in output list in sorted order 
+		while(!pq.isEmpty()){
+	
+			ans.add(pq.poll());
+	
+		}
+
+		return ans;
+	}
+
+}
