@@ -1,0 +1,74 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        
+        // creating result linked list 
+        ListNode result = new ListNode(0);
+
+        // creating pointer to add next members in result 
+        ListNode temp = result;
+
+        // variables to stire sum and carry 
+        int sum = 0;
+        int carry = 0;
+
+        // iterating through both the lists till one of them ends 
+        while(l1 != null || l2 != null){
+            int l1Digit=0; 
+            int l2Digit=0;
+            if(l1 != null){
+                l1Digit = l1.val;
+                l1 = l1.next;
+            }
+             if(l2 != null){
+                l2Digit = l2.val;
+                l2 = l2.next;
+            }
+
+            sum = carry + l1Digit + l2Digit;
+            carry = sum/10;
+            sum = sum%10;
+
+            // adding sum in new list 
+            temp.next = new ListNode(sum);
+            temp = temp.next;
+        }
+
+        // checking for remaining elements in l1 
+        while(l1 != null){
+            sum = carry + l1.val;
+            carry = sum/10;
+            sum = sum%10;
+            l1 = l1.next;
+            temp.next = new ListNode(sum);
+            temp = temp.next;
+        }
+
+        // checking for remaining elements in l2 
+        while(l2 != null){
+            sum = carry + l2.val;
+            carry = sum/10;
+            sum = sum%10;
+            l2 = l2.next;
+            temp.next = new ListNode(sum);
+            temp = temp.next;
+        }
+
+        // checking if carry is remaining
+        if(carry>0){
+            temp.next = new ListNode(carry);
+            temp = temp.next;
+        }
+
+        return result.next;
+    }
+}
