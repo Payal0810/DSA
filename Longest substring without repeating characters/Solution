@@ -1,0 +1,37 @@
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        
+        int n = s.length();
+        int windowStart = 0;
+        int windowEnd = 0;
+
+        int maxLen = Integer.MIN_VALUE;
+
+        // hashmap for keeping track of alphabets 
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        while(windowEnd < n){
+            char ch = s.charAt(windowEnd);
+            
+            // checking if character is repeated 
+            if(map.containsKey(ch)){
+                if(map.containsKey(ch) && map.get(ch)>=windowStart){
+                    windowStart = map.get(ch)+1;
+                }
+               
+            }
+
+            map.put(ch,windowEnd);
+          
+            // calculating length 
+            maxLen = Math.max(maxLen, windowEnd-windowStart+1);
+            windowEnd++;
+        }
+
+        if( maxLen == Integer.MIN_VALUE){
+            maxLen = 0;
+        }
+
+        return maxLen;
+    }
+}
