@@ -1,0 +1,16 @@
+public class Solution {
+    public static int calcGCD(int n, int m){
+        // Write your code here.
+        
+        int smallest = n>m?m:n;
+        int max = Integer.MIN_VALUE;
+
+        for(int i=1; i<=smallest; i++){
+            if(m%i==0 && n%i==0){
+                max = Integer.max(max, i);
+            }
+        }
+
+        return max;
+    }
+}
